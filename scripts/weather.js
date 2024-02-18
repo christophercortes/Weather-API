@@ -37,8 +37,8 @@ function displayWeatherData(weatherData) {
   humidityData.textContent = `${weatherData.main.humidity}`;
   visibilityData.textContent = `${weatherData.visibility}`;
   sunriseData.textContent = `${weatherData.sys.sunrise}`;
-    sunsetData.textContent = `${weatherData.sys.sunset}`;
-    countryData.textContent = `${weatherData.sys.country}`;
+  sunsetData.textContent = `${weatherData.sys.sunset}`;
+  countryData.textContent = `${weatherData.sys.country}`;
   const iconUrl = `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
   weatherIcon.src = iconUrl;
 }
@@ -70,6 +70,7 @@ function populateLocationDropdown() {
       name: "Playa El Laucho",
       latitude: -18.48654,
       longitude: -70.32662,
+      image: "/images/Playa-El-Laucho.jpg",
     },
     {
       name: "Playa Cavancha",
@@ -95,6 +96,7 @@ function populateLocationDropdown() {
       name: "Anakena",
       latitude: -27.073327,
       longitude: -109.322965,
+      image: "Anakena.jpg",
     },
     {
       name: "Quintay",
@@ -105,6 +107,7 @@ function populateLocationDropdown() {
       name: "Totoralillo",
       latitude: -30.07288,
       longitude: -71.37431,
+      image: "../images/Totoralillo.jpg",
     },
     {
       name: "Buchupureo",
@@ -132,6 +135,15 @@ function populateLocationDropdown() {
     const option = document.createElement("option");
     option.textContent = location.name;
     option.value = `${location.latitude},${location.longitude}`;
+
+    // If the location has an image path specified, create and append an image element
+    if (location.image) {
+      const image = document.createElement("img");
+      image.src = location.image;
+      image.alt = location.name;
+      option.appendChild(image);
+    }
+
     locationSelect.appendChild(option);
   });
 
