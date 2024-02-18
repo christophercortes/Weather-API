@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <h1>Weather App</h1>
+    <h2>The most beautiful beaches and lake that you must visit in Chile</h2>
+    <main>
+        <div>
+            <label for="location">Select Location:</label>
+            <select id="location">
+                <!-- Options will be dynamically populated here -->
+            </select>
+        </div>
+        <div>
+            <p>Temperature: <span id="temperature"></span>°C</p>
+            <p>Wind Speed: <span id="windSpeed"></span> m/s</p>
+            <p>Location:<span id="place"></span>,<span id="country"></span></p>
+            <p>Humidity:<span id="humidity"></span></p>
+            <p>Visibility:<span id="visibility"></span></p>
+            <p>Sunrise:<span id="sunrise"></span></p>
+            <p>Sunset:<span id="sunset"></span></p>
+            <p id="description"></p>
+            <img id="weatherIcon" alt="Weather Icon">
+        </div>
+
+        <div>
+    </main>
+    <script src="scripts/weather.js"></script>
+</body>
+
+</html>
