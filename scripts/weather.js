@@ -5,12 +5,14 @@ const weatherIcon = document.getElementById("weatherIcon");
 const locationSelect = document.getElementById("location");
 const place = document.getElementById("place");
 const humidityData = document.getElementById("humidity");
-const visibilityData = document.getElementById("visibility");
 const sunriseData = document.getElementById("sunrise");
 const sunsetData = document.getElementById("sunset");
 const countryData = document.getElementById("country");
+const feelLike = document.getElementById("feel-like");
+const minData = document.getElementById("min");
+const maxData = document.getElementById("max");
 
-const apiKey = "8858983065863e23c3d5a33999223d4c"; // Replace with your OpenWeatherMap API key
+const apiKey = "8858983065863e23c3d5a33999223d4c";
 
 // Function to fetch weather data for a specific location
 async function fetchWeatherData(latitude, longitude) {
@@ -34,11 +36,18 @@ function displayWeatherData(weatherData) {
   windSpeed.textContent = `${weatherData.wind.speed.toFixed(1)}`;
   description.textContent = weatherData.weather[0].description;
   place.textContent = `${weatherData.name}`;
+  minData.textContent = `${weatherData.main.temp_min.toFixed(0)}`;
+  maxData.textContent = `${weatherData.main.temp_max.toFixed(0)}`;
   humidityData.textContent = `${weatherData.main.humidity}`;
-  visibilityData.textContent = `${weatherData.visibility}`;
-  sunriseData.textContent = `${weatherData.sys.sunrise}`;
-  sunsetData.textContent = `${weatherData.sys.sunset}`;
+
+  const sunriseTime = new Date(weatherData.sys.sunrise * 1000);
+  const sunsetTime = new Date(weatherData.sys.sunset * 1000);
+  const timeOptions = { hour: 'numeric', minute: 'numeric' };
+  sunriseData.textContent = `${sunriseTime.toLocaleTimeString('en-US', timeOptions)}`;
+  sunsetData.textContent = `${sunsetTime.toLocaleTimeString('en-US', timeOptions)}`;
+
   countryData.textContent = `${weatherData.sys.country}`;
+  feelLike.textContent = `${weatherData.main.feels_like.toFixed(0)}`;
   const iconUrl = `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
   weatherIcon.src = iconUrl;
 }
@@ -63,14 +72,11 @@ function getUserLocation() {
 
 // Populate select dropdown with nearby locations
 function populateLocationDropdown() {
-  // You can add logic here to populate the dropdown with nearby locations
-  // For simplicity, let's add some sample locations
   const locations = [
     {
       name: "Playa El Laucho",
       latitude: -18.48654,
       longitude: -70.32662,
-      image: "/images/Playa-El-Laucho.jpg",
     },
     {
       name: "Playa Cavancha",
@@ -96,7 +102,6 @@ function populateLocationDropdown() {
       name: "Anakena",
       latitude: -27.073327,
       longitude: -109.322965,
-      image: "Anakena.jpg",
     },
     {
       name: "Quintay",
@@ -107,7 +112,6 @@ function populateLocationDropdown() {
       name: "Totoralillo",
       latitude: -30.07288,
       longitude: -71.37431,
-      image: "../images/Totoralillo.jpg",
     },
     {
       name: "Buchupureo",
@@ -135,14 +139,6 @@ function populateLocationDropdown() {
     const option = document.createElement("option");
     option.textContent = location.name;
     option.value = `${location.latitude},${location.longitude}`;
-
-    // If the location has an image path specified, create and append an image element
-    if (location.image) {
-      const image = document.createElement("img");
-      image.src = location.image;
-      image.alt = location.name;
-      option.appendChild(image);
-    }
 
     locationSelect.appendChild(option);
   });

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
@@ -13,27 +12,53 @@
     <h1>Weather App</h1>
     <h2>The most beautiful beaches and lake that you must visit in Chile</h2>
     <main>
-        <div>
+        <div class="location">
             <label for="location">Select Location:</label>
             <select id="location">
                 <!-- Options will be dynamically populated here -->
             </select>
         </div>
-        <div>
-            <p>Temperature: <span id="temperature"></span>°C</p>
-            <p>Wind Speed: <span id="windSpeed"></span> m/s</p>
-            <p>Location:<span id="place"></span>,<span id="country"></span></p>
-            <p>Humidity:<span id="humidity"></span></p>
-            <p>Visibility:<span id="visibility"></span></p>
-            <p>Sunrise:<span id="sunrise"></span></p>
-            <p>Sunset:<span id="sunset"></span></p>
+        <div class="describe">
+        <div class="report">
+            <p class="temp"><span id="temperature"></span>°<img id="weatherIcon" alt=""></p>
             <p id="description"></p>
-            <img id="weatherIcon" alt="Weather Icon">
         </div>
-
         <div>
+            <p class="locality"><span id="place"></span>,<span id="country"></span></p>
+            <p class="feel-like">Feels Like: <span id="feel-like"></span>°</p>
+            <p>The weather report is provided by: <a href="https://openweathermap.org/">OpenWeather</a></p>
+        </div>
+        </div>
+        <div class="statement">
+            <div>
+                <p class="emoticon">💧</p>
+                <p class="condition">Humidity</p>
+                <p class="outline"><span id="humidity"></span>%</p>
+            </div>
+            <div>
+                <p class="emoticon">🍃</p>
+                <p class="condition">Wind</p>
+                <p class="outline"><span id="windSpeed"></span> km/h</p>
+            </div>
+            <div>
+                <p class="emoticon">🌤️ ☀️</p>
+                <p class="condition">min/max</p>
+                <p class="outline"><span id="min"></span>°<span id="max"></span>°</p>
+            </div>
+            <div>
+                <p class="emoticon">🌄 🌅</p>
+                <p class="condition">Sunrise Sunset</p>
+                <p class="outline"><span id="sunrise"></span> <span id="sunset"></span></p>
+            </div>
+        </div>
     </main>
     <script src="scripts/weather.js"></script>
 </body>
+
+<footer>
+    <p>&copy; <span id="year"></span> Christopher Cortes BYU-I WDD330 API Project</p>
+    <p><span id="date"></span></p>
+    <script src="scripts/date.js"></script>
+</footer>
 
 </html>
