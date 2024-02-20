@@ -22,6 +22,7 @@ async function fetchWeatherData(latitude, longitude) {
     if (response.ok) {
       const data = await response.json();
       displayWeatherData(data);
+      localStorage.setItem("weatherData", JSON.stringify(data));
     } else {
       throw new Error("Failed to fetch weather data");
     }
@@ -50,6 +51,14 @@ function displayWeatherData(weatherData) {
   feelLike.textContent = `${weatherData.main.feels_like.toFixed(0)}`;
   const iconUrl = `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
   weatherIcon.src = iconUrl;
+}
+
+function getWeatherDataFromLocalStorage() {
+  const storeWeatherData = localStorage.getItem("weatherData");
+  if (storeWeatherData) {
+    const weatherData = JSON.parse(storeWeatherData);
+    displayWeatherData(weatherData);
+  }
 }
 
 // Function to get user's current location
@@ -157,3 +166,4 @@ function populateLocationDropdown() {
 
 // Initialize the app
 populateLocationDropdown();
+getWeatherDataFromLocalStorage();
