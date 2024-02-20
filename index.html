@@ -19,15 +19,15 @@
             </select>
         </div>
         <div class="describe">
-        <div class="report">
-            <p class="temp"><span id="temperature"></span>°<img id="weatherIcon" alt=""></p>
-            <p id="description"></p>
-        </div>
-        <div>
-            <p class="locality"><span id="place"></span>,<span id="country"></span></p>
-            <p class="feel-like">Feels Like: <span id="feel-like"></span>°</p>
-            <p>The weather report is provided by: <a href="https://openweathermap.org/">OpenWeather</a></p>
-        </div>
+            <div class="report">
+                <p class="temp"><span id="temperature"></span>°<img id="weatherIcon" alt=""></p>
+                <p id="description"></p>
+            </div>
+            <div>
+                <p class="locality"><span id="place"></span>,<span id="country"></span></p>
+                <p class="feel-like">Feels Like: <span id="feel-like"></span>°</p>
+                <p>The weather report is provided by: <a href="https://openweathermap.org/">OpenWeather</a></p>
+            </div>
         </div>
         <div class="statement">
             <div>
@@ -53,12 +53,13 @@
         </div>
     </main>
     <script src="scripts/weather.js"></script>
+    <footer>
+        <div>
+            <p>&copy; <span id="year"></span> Christopher Cortes BYU-I WDD330 API Project</p>
+            <p><span id="date"></span></p>
+            <script src="scripts/date.js"></script>
+        </div>
+    </footer>
 </body>
-
-<footer>
-    <p>&copy; <span id="year"></span> Christopher Cortes BYU-I WDD330 API Project</p>
-    <p><span id="date"></span></p>
-    <script src="scripts/date.js"></script>
-</footer>
 
 </html>
